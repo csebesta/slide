@@ -10,6 +10,7 @@ import XMonad.Util.Run (spawnPipe)
 ------------------------------------------------------------------------
 -- Status bar (Pretty Printing)
 -- https://github.com/dmxt/Solarized-xmonad-xmobar
+--
 myBar = "xmobar"
 myPP = xmobarPP
     { ppTitle = xmobarColor "#657b83" "" . shorten 100
@@ -25,7 +26,6 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 -- Colors and borders
 myNormalBorderColor = "#002b36"
 myFocusedBorderColor = "#93a1a1"
---myFocusedBorderColor = "#839496"
 myBorderWidth = 1
 
 ------------------------------------------------------------------------
@@ -45,16 +45,17 @@ myKeys =
     , (( mod1Mask .|. controlMask, xK_l ), spawn "slock" ) -- Lock screen
     ]
 
-    -- \ -sf '#839496'" )
 ------------------------------------------------------------------------
 -- Main function
 -- https://beginners-guide-to-xmonad.readthedocs.io/configure_xmonadhs.html
 -- https://unix.stackexchange.com/questions/336701/xmonad-defaults-depreciation-what-is-the-future-proof-configuration
 -- https://wiki.haskell.org/Xmonad/Config_archive/John_Goerzen's_Configuration
+--
 main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 
 ------------------------------------------------------------------------
 -- Main configuration
+--
 myConfig = def
     { manageHook = manageDocks <+> manageHook def
     , layoutHook = smartBorders $ avoidStruts $ layoutHook def
