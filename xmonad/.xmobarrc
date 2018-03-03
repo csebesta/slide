@@ -1,0 +1,73 @@
+-- vi:syntax=haskell
+-- https://wiki.archlinux.org/index.php/Xmobar
+-- https://github.com/dmxt/Solarized-xmonad-xmobar
+-- https://projects.haskell.org/xmobar/#system-monitor-plugins
+Config {
+
+	-- Appearance
+	  font =         "xft:DejaVu Sans Mono:size=11:antialias=True"
+	, bgColor =      "#002b36" -- Base03
+	, fgColor =      "#586e75" -- Base01
+	, position =     Top
+	, border =       NoBorder
+	, borderColor =  "black"
+
+	-- Layout
+	, sepChar =  "%"   -- delineator between plugin names and straight text
+	, alignSep = "}{"  -- separator between left-right alignment
+	, template = " %StdinReader% }{ %dynnetwork% | %cpu% | %memory% | %vol% | %date% "
+
+	-- https://stackoverflow.com/questions/36286004/xmobar-is-hidden-on-first-xmonad-workspace
+	-- General behavior
+	, lowerOnStart =     True    -- send to bottom of window stack on start
+	, hideOnStart =      False   -- start with window unmapped (hidden)
+	, allDesktops =      True    -- show on all desktops
+	, overrideRedirect = False   -- set the Override Redirect flag (Xlib)
+	, pickBroadest =     False   -- choose widest display (multi-monitor)
+	, persistent =       True    -- enable/disable hiding (True = disabled)
+
+	, commands =
+
+
+    -- Network activity monitor (dynamic interface resolution)
+    [ Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
+                         , "--Low"      , "1000"       -- units: B/s
+                         , "--High"     , "5000"       -- units: B/s
+                         ] 10
+
+	-- Volume indicator (volume.sh must be in path)
+	, Run Com "volume.sh" [] "vol" 1
+
+    -- Cpu activity monitor
+    , Run Cpu            [] 10
+
+    -- Memory usage monitor
+    , Run Memory         [ "--template" , "Mem: <usedratio>%" ] 10
+
+    ---- battery monitor
+    --, Run Battery        [ "--template" , "Batt: <acstatus>"
+    --                     , "--Low"      , "10"        -- units: %
+    --                     , "--High"     , "80"        -- units: %
+    --                     , "--low"      , "darkred"
+    --                     , "--normal"   , "darkorange"
+    --                     , "--high"     , "darkgreen"
+
+    --                     , "--" -- battery specific options
+    --                               -- discharging status
+    --                               , "-o"	, "<left>% (<timeleft>)"
+    --                               -- AC "on" status
+    --                               , "-O"	, "<fc=#dAA520>Charging</fc>"
+    --                               -- charged status
+    --                               , "-i"	, "<fc=#006000>Charged</fc>"
+    --                     ] 50
+
+    -- Time and date indicator
+	-- Base1
+    , Run Date           "<fc=#93a1a1>%a %b %_d %Y %H:%M</fc>" "date" 10
+
+	-- Standad Input
+	, Run StdinReader
+
+	]
+
+}
