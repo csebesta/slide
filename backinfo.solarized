@@ -18,14 +18,14 @@ Login time: $( date +'%D %T' )
 EOF
 
 # Create solid background and overlay text
-FONT1="$HOME/.fonts/" # Base1
-FONT2="$HOME/.fonts/" # Base01
+FONT1="$HOME/.fonts/overpass/overpass-bold.otf" # Base1
+FONT2="$HOME/.fonts/overpass/overpass-light.otf" # Base01
 gm convert \
 	-size $RESOLUTION xc:#002b36 \
 	-fill '#93a1a1' -font $FONT1 -pointsize 48 \
 	-gravity Center \
 	-draw "text 0,-50 '$HOSTNAME'" \
-	-fill '#586e75' -font $FONT -pointsize 16 \
+	-fill '#586e75' -font $FONT2 -pointsize 16 \
 	-gravity Center \
 	-draw "text 0,0 '$TEXT'" \
 	/tmp/backinfo.png
