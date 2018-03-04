@@ -1,0 +1,2 @@
+# Prevents function keys from inserting tilde (~) character
+"\e[": skip-csi-sequence

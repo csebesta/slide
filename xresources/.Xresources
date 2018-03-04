@@ -1,0 +1,16 @@
+#include ".Xresources.dark"
+
+! Font configuration
+URxvt.font: xft:DejaVu Sans Mono:size=15
+URxvt.letterSpace: -2
+
+! Disable scrollbar
+URxvt.scrollBar: false
+
+! Hide cursor on input
+URxvt.pointerBlank: true
+
+! Settings for xterm
+XTerm*termName:xterm-256color
+XTerm*faceName:DejaVu Sans Mono
+XTerm*faceSize:15

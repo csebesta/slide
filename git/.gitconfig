@@ -1,0 +1,11 @@
+[user]
+	name = Chad Sebesta
+	email = csebesta@users.noreply.github.com
+[core]
+	editor = vim
+	autocrlf = input
+	safecrlf = true
+[credential]
+	helper = cache
+[push]
+	default = simple
