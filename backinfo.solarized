@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Script for imitating backinfo functionality
+# Color palette: https://ethanschoonover.com/solarized
+# Written by Chad Sebesta
+
+# Get screen resolution
+RESOLUTION="$( xdpyinfo | awk '/dimensions/{print $2}' )"
+
+# Get system information
+HOSTNAME="$( hostname | awk '{print toupper($0)}' )" # Use uname -n instead? (POSIX standard)
+USER="$( id -un )"
+
+# Write output to TEXT variable
+read -r -d '' TEXT << EOF
+Logged on user: $USER
+Login time: $( date +'%D %T' )
+EOF
+
+# Create solid background and overlay text
+FONT1="$HOME/.fonts/" # Base1
+FONT2="$HOME/.fonts/" # Base01
+gm convert \
+	-size $RESOLUTION xc:#002b36 \
+	-fill '#93a1a1' -font $FONT1 -pointsize 48 \
+	-gravity Center \
+	-draw "text 0,-50 '$HOSTNAME'" \
+	-fill '#586e75' -font $FONT -pointsize 16 \
+	-gravity Center \
+	-draw "text 0,0 '$TEXT'" \
+	/tmp/backinfo.png
+
+# Set background
+feh --bg-center --no-fehbg /tmp/backinfo.png
