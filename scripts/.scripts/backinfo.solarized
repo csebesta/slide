@@ -34,4 +34,7 @@ gm convert \
 	/tmp/backinfo.png
 
 # Set background
-feh --bg-center --no-fehbg /tmp/backinfo.png
+feh \
+	--bg-center \
+	--no-fehbg \
+	/tmp/backinfo.png

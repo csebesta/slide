@@ -18,3 +18,6 @@ fi
 
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
+# Set PATH so it includes user's private scripts directory
+PATH="$HOME/.scripts:$PATH"
