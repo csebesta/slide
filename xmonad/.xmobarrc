@@ -1,55 +1,64 @@
 -- vi:syntax=haskell
--- https://wiki.archlinux.org/index.php/Xmobar
 -- https://github.com/dmxt/Solarized-xmonad-xmobar
 -- https://projects.haskell.org/xmobar/#system-monitor-plugins
+-- https://wiki.archlinux.org/index.php/Xmobar
 Config {
 
-	-- Appearance
-	  font =         "xft:DejaVu Sans Mono:size=11:antialias=True"
-	, bgColor =      "#002b36" -- Base03
-	, fgColor =      "#586e75" -- Base01
-	, position =     Top
-	, border =       NoBorder
-	, borderColor =  "black"
+    --------------------------------------------------------------------
+    -- Appearance
+    --
+      font =         "xft:DejaVu Sans Mono:size=11:antialias=True"
+    , bgColor =      "#002b36" -- Base03
+    , fgColor =      "#586e75" -- Base01
+    , position =     Top
+    , border =       NoBorder
+    , borderColor =  "black"
 
-	-- Layout
-	, sepChar =  "%"   -- delineator between plugin names and straight text
-	, alignSep = "}{"  -- separator between left-right alignment
-	, template = " %StdinReader% }{ %dynnetwork% | %cpu% | %memory% | %vol% | %date% "
+    --------------------------------------------------------------------
+    -- Layout
+    --
+    , sepChar =  "%"   -- delineator between plugin names and straight text
+    , alignSep = "}{"  -- separator between left-right alignment
+    , template = " %StdinReader% }{ %dynnetwork% | %cpu% | %memory% | %vol% | %date% "
 
-	-- https://stackoverflow.com/questions/36286004/xmobar-is-hidden-on-first-xmonad-workspace
-	-- General behavior
-	, lowerOnStart =     True    -- send to bottom of window stack on start
-	, hideOnStart =      False   -- start with window unmapped (hidden)
-	, allDesktops =      True    -- show on all desktops
-	, overrideRedirect = False   -- set the Override Redirect flag (Xlib)
-	, pickBroadest =     False   -- choose widest display (multi-monitor)
-	, persistent =       True    -- enable/disable hiding (True = disabled)
+    --------------------------------------------------------------------
+    -- General behavior
+    -- https://stackoverflow.com/questions/36286004/xmobar-is-hidden-on-first-xmonad-workspace
+    --
+    , lowerOnStart =     True    -- send to bottom of window stack on start
+    , hideOnStart =      False   -- start with window unmapped (hidden)
+    , allDesktops =      True    -- show on all desktops
+    , overrideRedirect = False   -- set the Override Redirect flag (Xlib)
+    , pickBroadest =     False   -- choose widest display (multi-monitor)
+    , persistent =       True    -- enable/disable hiding (True = disabled)
 
-	, commands =
+    --------------------------------------------------------------------
+    -- Commands
+    --
+    , commands =
+
+    -- Standard input
+    [ Run StdinReader
 
     -- Network activity monitor (dynamic interface resolution)
-    [ Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
-                         , "--Low"      , "1000"       -- units: B/s
-                         , "--High"     , "5000"       -- units: B/s
-                         ] 10
-
-	-- Volume indicator (volume.sh must be in path)
-	, Run Com "volume.sh" [] "vol" 1
+    , Run DynNetwork      [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
+                          , "--Low"      , "1000"       -- units: B/s
+                          , "--High"     , "5000"       -- units: B/s
+                          ] 10
 
     -- Cpu activity monitor
-    , Run Cpu            [] 10
+    , Run Cpu             [] 10
 
     -- Memory usage monitor
-    , Run Memory         [ "--template" , "Mem: <usedratio>%" ] 10
+    , Run Memory          [ "--template" , "Mem: <usedratio>%" ] 10
+
+    -- Volume indicator (volume.sh must be in path)
+    , Run Com "volume.sh" [] "vol" 1
 
     -- Time and date indicator
-	-- Base1
-    , Run Date           "<fc=#93a1a1>%a %b %d %Y %H:%M</fc>" "date" 10
+    -- Base1
+    , Run Date            "<fc=#93a1a1>%a %b %d %Y %H:%M</fc>" "date" 10
 
-	-- Standad Input
-	, Run StdinReader
-
-	]
+    ]
 
 }
