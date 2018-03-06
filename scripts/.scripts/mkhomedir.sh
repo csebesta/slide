@@ -8,15 +8,24 @@ DIRECTORIES="
 	Documents
 	Downloads
 	Pictures
+	Public
 	Videos
 	"
 
 # Make directories
 for directory in $DIRECTORIES; do
 
-	# Make directory and output message
-	mkdir "$HOME/$directory" > /dev/null 2>&1 \
-	&& echo "$directory created" \
-	|| echo "$directory already exists"
+	if [[ -d "$HOME/$directory" ]]; then
+
+		echo "$directory exists"
+
+	else
+
+		# Make directory and output message
+		mkdir "$HOME/$directory" > /dev/null 2>&1 \
+		&& echo "$directory created" \
+		|| echo "$directory creation failed"
+
+	fi
 
 done
