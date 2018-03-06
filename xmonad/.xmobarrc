@@ -63,7 +63,7 @@ Config {
 
     -- Time and date indicator
 	-- Base1
-    , Run Date           "<fc=#93a1a1>%a %b %_d %Y %H:%M</fc>" "date" 10
+    , Run Date           "<fc=#93a1a1>%a %b %d %Y %H:%M</fc>" "date" 10
 
 	-- Standad Input
 	, Run StdinReader

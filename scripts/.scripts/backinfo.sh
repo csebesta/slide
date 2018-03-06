@@ -6,16 +6,16 @@
 # Written by Chad Sebesta
 
 # Get screen resolution
-RESOLUTION="$( xdpyinfo | awk '/dimensions/{print $2}' )"
+RESOLUTION="$(xdpyinfo | awk '/dimensions/{print $2}')"
 
 # Get system information
-HOSTNAME="$( hostname | awk '{print toupper($0)}' )"
-USER="$( id -un )"
+HOSTNAME="$(hostname | awk '{print toupper($0)}')"
+USER="$(id -un)"
 
 # Write output to TEXT variable
 read -r -d '' TEXT << EOF
 Logged on user: $USER
-Login time: $( date +'%D %T' )
+Login time: $(date +'%D %T')
 EOF
 
 # Fonts
