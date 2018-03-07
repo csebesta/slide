@@ -12,16 +12,17 @@ DIRECTORIES="
 	Videos
 	"
 
-# Make directories
+# Create directories
 for directory in $DIRECTORIES; do
 
+	# Test if directory exists
 	if [[ -d "$HOME/$directory" ]]; then
 
 		echo "$directory exists"
 
+	# Make directory and test for errors
 	else
 
-		# Make directory and output message
 		mkdir "$HOME/$directory" > /dev/null 2>&1 \
 		&& echo "$directory created" \
 		|| echo "$directory creation failed"
