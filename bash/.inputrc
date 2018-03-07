@@ -1,5 +1,5 @@
 # vi:syntax=sh
-# Settings for bash readline
+# Settings for GNU readline
 
 # Prevents function keys from inserting tilde (~) character
 "\e[": skip-csi-sequence
