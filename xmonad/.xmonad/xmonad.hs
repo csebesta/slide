@@ -13,6 +13,7 @@ import XMonad.Util.Run (spawnPipe)
 --
 myBar = "xmobar"
 myPP = xmobarPP
+
     { ppTitle = xmobarColor "#657b83" "" . shorten 100
     , ppCurrent = xmobarColor "#93a1a1" "" . wrap "" ""
     , ppSep = xmobarColor "#657b83" "" " | "
@@ -24,12 +25,14 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
 ------------------------------------------------------------------------
 -- Colors and borders
+--
 myNormalBorderColor = "#002b36"
 myFocusedBorderColor = "#93a1a1"
 myBorderWidth = 1
 
 ------------------------------------------------------------------------
 -- Keybindings
+--
 myKeys =
 
     [ (( mod1Mask, xK_p ), spawn "dmenu_run \
@@ -57,6 +60,7 @@ main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 -- Main configuration
 --
 myConfig = def
+
     { manageHook = manageDocks <+> manageHook def
     , layoutHook = smartBorders $ avoidStruts $ layoutHook def
     , terminal = "rxvt-unicode"
