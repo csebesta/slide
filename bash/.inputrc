@@ -1,0 +1,21 @@
+# vi:syntax=sh
+# Settings for bash readline
+
+# Prevents function keys from inserting tilde (~) character
+"\e[": skip-csi-sequence
+
+# Set editing mode to vi
+set editing-mode vi
+
+# Set legacy keybindings for vi mode
+# See man 3 readline for more information
+$if mode=vi
+
+	set keymap vi-insert
+	"\C-l": clear-screen
+	"\C-p": previous-history
+	"\C-n": next-history
+	"\C-a": beginning-of-line
+	"\C-e": end-of-line
+
+$endif
