@@ -7,12 +7,12 @@ Config {
     --------------------------------------------------------------------
     -- Appearance
     --
-      font =         "xft:DejaVu Sans Mono:size=11:antialias=True"
-    , bgColor =      "#002b36" -- Base03
-    , fgColor =      "#586e75" -- Base01
-    , position =     Top
-    , border =       NoBorder
-    , borderColor =  "black"
+      font =        "xft:DejaVu Sans Mono:size=11:antialias=True"
+    , bgColor =     "#002b36" -- Base03
+    , fgColor =     "#586e75" -- Base01
+    , position =    Top
+    , border =      NoBorder
+    , borderColor = "black"
 
     --------------------------------------------------------------------
     -- Layout
@@ -41,10 +41,7 @@ Config {
     [ Run StdinReader
 
     -- Network activity monitor (dynamic interface resolution)
-    , Run DynNetwork      [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
-                          , "--Low"      , "1000"       -- units: B/s
-                          , "--High"     , "5000"       -- units: B/s
-                          ] 10
+    , Run DynNetwork      [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s" ] 10
 
     -- Cpu activity monitor
     , Run Cpu             [] 10
