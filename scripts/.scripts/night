@@ -1,0 +1,2 @@
+#!/bin/bash
+redshift -O 3700k > /dev/null 2>&1
