@@ -1,0 +1,5 @@
+open_with p7zip
+search scripts
+search root
+rename kaliburnr.sh
+set colorscheme solarized
