@@ -109,6 +109,9 @@ else
 	set background=dark
 	colorscheme solarized
 
+	" Airline configuration 
+	let g:airline_symbols_ascii=1
+
 endif
 
 " Toggle paste
