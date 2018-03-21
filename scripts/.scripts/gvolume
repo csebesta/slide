@@ -1,0 +1,13 @@
+#!/bin/bash
+# Script to generate volume status for xmobar
+
+# Get Master volume
+mixer="$(amixer get Master | grep -m 1 '\[' | awk -v FS="(\[|\])" '{print $2}')"
+muted="$(amixer get Master | grep 'off')"
+
+# Generate output
+if [ -n "$muted" ]; then
+	echo "[--%]"
+else
+	echo "[${mixer}]"
+fi

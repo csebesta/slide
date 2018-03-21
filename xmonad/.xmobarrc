@@ -50,7 +50,7 @@ Config {
     , Run Memory          [ "--template" , "Mem: <usedratio>%" ] 10
 
     -- Volume indicator (volume.sh must be in path)
-    , Run Com "volume.sh" [] "vol" 1
+    , Run Com "gvolume" [] "vol" 1
 
     -- Time and date indicator
     -- Base1

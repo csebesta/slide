@@ -47,6 +47,7 @@ set laststatus=2 " Always display satus line
 set wildmenu " Show completions for commands
 set showmatch " Highlight matching features
 set visualbell " Visual beeps instead of audible beeps
+set modeline " Enable modeline reading
 
 " Backspace over indentation
 set backspace=indent,eol,start
