@@ -49,7 +49,7 @@ Config {
     -- Memory usage monitor
     , Run Memory          [ "--template" , "Mem: <usedratio>%" ] 10
 
-    -- Volume indicator (volume.sh must be in path)
+    -- Volume indicator (script must be in path)
     , Run Com "gvolume" [] "vol" 1
 
     -- Time and date indicator
