@@ -19,7 +19,7 @@ Config {
     --
     , sepChar =  "%"   -- delineator between plugin names and straight text
     , alignSep = "}{"  -- separator between left-right alignment
-    , template = " %StdinReader% }{ %dynnetwork% | %cpu% | %memory% | %vol% | %date% "
+    , template = " %StdinReader% }{ %dynnetwork% | %cpu% | %memory% | %battery% | %vol% | %date% "
 
     --------------------------------------------------------------------
     -- General behavior
@@ -41,20 +41,28 @@ Config {
     [ Run StdinReader
 
     -- Network activity monitor (dynamic interface resolution)
-    , Run DynNetwork      [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s" ] 10
+    , Run DynNetwork    [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s" ] 10
 
     -- Cpu activity monitor
-    , Run Cpu             [] 10
+    , Run Cpu           [ "--template" , "Cpu: <total>%" ] 10
 
     -- Memory usage monitor
-    , Run Memory          [ "--template" , "Mem: <usedratio>%" ] 10
+    , Run Memory        [ "--template" , "Mem: <usedratio>%" ] 10
+
+    -- Battery monitor
+    , Run Battery       [ "--template" , "Bat: <acstatus>"
+                        , "--" -- Battery options
+                        , "-o" , "<left>% (<timeleft>)" -- Discharging
+                        , "-O" , "Charging"             -- AC on status
+                        , "-i" , "Full"                 -- Charged status
+                        ] 10
 
     -- Volume indicator (script must be in path)
     , Run Com "gvolume" [] "vol" 1
 
     -- Time and date indicator
     -- Base1
-    , Run Date            "<fc=#93a1a1>%a %b %d %Y %H:%M</fc>" "date" 10
+    , Run Date          "<fc=#93a1a1>%a %b %d %Y %H:%M</fc>" "date" 10
 
     ]
 
