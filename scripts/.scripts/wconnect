@@ -1,0 +1,30 @@
+#!/bin/bash
+# Script to facilitate connecting to wifi network
+
+case "$1" in
+
+	connect)
+		read -p "Enter network SSID: " SSID
+		read -sp "Enter network password: " PASSWORD
+		echo -e "\nConnecting to $SSID..."
+		nmcli device wifi connect $SSID password $PASSWORD
+		;;
+
+	list)
+		nmcli device wifi rescan > /dev/null 2>&1
+		nmcli device wifi list
+		;;
+
+	on)
+		nmcli radio wifi on
+		;;
+
+	off)
+		nmcli radio wifi off
+		;;
+
+	*)
+		echo 'Usage: wconnect {connect|list|on|off}'
+		;;
+
+esac
