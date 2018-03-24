@@ -25,6 +25,7 @@ case "$1" in
 
 	*)
 		echo 'Usage: wconnect {connect|list|on|off}'
+		exit 1
 		;;
 
 esac
