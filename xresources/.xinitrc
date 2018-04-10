@@ -7,7 +7,7 @@ xrdb ~/.Xresources
 xsetroot -cursor_name left_ptr
 
 # Set background image
-~/.scripts/backinfo.sh
+~/.scripts/backinfo
 
 # Execute xmonad
 exec xmonad
