@@ -21,3 +21,9 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Set PATH so it includes user's private scripts directory
 PATH="$HOME/.scripts:$PATH"
+
+# Autostart X at login
+# https://wiki.archlinux.org/index.php/Xinit#Autostart_X_at_login
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
