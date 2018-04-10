@@ -52,9 +52,9 @@ Config {
     -- Battery monitor
     , Run Battery       [ "--template" , "Bat: <acstatus>"
                         , "--" -- Battery options
-                        , "-o" , "<left>% (<timeleft>)" -- Discharging
-                        , "-O" , "Charging"             -- AC on status
-                        , "-i" , "Full"                 -- Charged status
+                        , "-o" , "<left>%" -- Discharging
+                        , "-O" , "100%"    -- AC on status
+                        , "-i" , "100%"    -- Charged status
                         ] 10
 
     -- Volume indicator (script must be in path)
