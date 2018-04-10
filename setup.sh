@@ -27,6 +27,17 @@ fi
 # Separator to make output easier to read
 echo $SEP
 
+# Create $HOME/.config directory
+# This prevents the stow directorty from inheriting odd files
+if [[ !(-d $HOME/.config) ]]; then
+	# Remove possible symbolic link, but fail if file is a directory
+	rm -f $HOME/.config > /dev/null 2>&1
+	# Create configuration directory
+	echo "Creating $HOME/.config..."
+	mkdir $HOME/.config
+	echo $SEP
+fi
+
 # For every directory in the stow directory...
 for d in */; do
 
