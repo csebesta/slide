@@ -4,6 +4,46 @@ filetype plugin on
 filetype indent on
 syntax on
 
+" Install vim-plug if it does not exist
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Plugins
+call plug#begin()
+Plug 'altercation/vim-colors-solarized'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-syntastic/syntastic'
+call plug#end()
+
+"" Automatically install plugins on startup
+"autocmd VimEnter *
+"  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+"  \|   PlugInstall --sync | q
+"  \| endif
+
+" Goyo settings
+function! s:goyo_enter()
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  set wrap
+  set linebreak
+endfunction
+
+" Limelight settings
+let g:limelight_conceal_ctermfg = 10
+
+
 " Split behavior
 set splitbelow
 set splitright
@@ -114,6 +154,19 @@ else
 	let g:airline_symbols_ascii=1
 
 endif
+
+"let g:netrw_banner = 0
+"let g:netrw_liststyle = 3
+"let g:netrw_browse_split = 4
+"let g:netrw_altv = 1
+"let g:netrw_winsize = 25
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"augroup END
+
+" Toggle NERDTree
+nnoremap <F12> :NERDTreeToggle<CR>
 
 " Toggle paste
 set pastetoggle=<F3>
