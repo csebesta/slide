@@ -1,5 +1,4 @@
 set nocp
-"execute pathogen#infect()
 filetype plugin on
 filetype indent on
 syntax on
@@ -8,7 +7,8 @@ syntax on
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  silent !clear
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC | quit
 endif
 
 " Plugins
