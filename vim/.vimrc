@@ -1,5 +1,5 @@
 set nocp
-execute pathogen#infect()
+"execute pathogen#infect()
 filetype plugin on
 filetype indent on
 syntax on
@@ -25,12 +25,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
 call plug#end()
 
-"" Automatically install plugins on startup
-"autocmd VimEnter *
-"  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-"  \|   PlugInstall --sync | q
-"  \| endif
-
 " Goyo settings
 function! s:goyo_enter()
   set noshowmode
@@ -42,7 +36,6 @@ endfunction
 
 " Limelight settings
 let g:limelight_conceal_ctermfg = 10
-
 
 " Split behavior
 set splitbelow
