@@ -17,6 +17,9 @@ alias ll='ls -l --color=auto'
 # Reduce output of haskell compiler
 alias ghc='ghc -hidir /tmp -odir /tmp'
 
+# Python alias
+alias python='python3'
+
 # Sudo does not work with aliases without an additional space
 alias sudo='sudo '
 
