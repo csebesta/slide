@@ -7,7 +7,7 @@ Config {
     --------------------------------------------------------------------
     -- Appearance
     --
-      font =        "xft:DejaVu Sans Mono:size=11:antialias=True"
+      font =        "xft:DejaVu Sans Mono:size=12:antialias=True"
     , bgColor =     "#002b36" -- Base03
     , fgColor =     "#586e75" -- Base01
     , position =    Top

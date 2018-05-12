@@ -36,7 +36,7 @@ myBorderWidth = 1
 myKeys =
 
     [ (( mod1Mask, xK_p ), spawn "dmenu_run \
-    \ -fn 'DejaVu Sans Mono-11' \
+    \ -fn 'DejaVu Sans Mono-12' \
     \ -nb '#002b36' \
     \ -nf '#586e75' \
     \ -sb '#073642' \

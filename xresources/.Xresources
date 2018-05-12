@@ -1,7 +1,7 @@
 #include ".Xresources.dark"
 
 ! Font configuration
-URxvt.font: xft:DejaVu Sans Mono:size=15
+URxvt.font: xft:DejaVu Sans Mono:size=16
 URxvt.letterSpace: -2
 
 ! Disable scrollbar
