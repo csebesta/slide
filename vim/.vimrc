@@ -78,7 +78,7 @@ set ruler " Display cursor position in status line
 set laststatus=2 " Always display satus line
 set wildmenu " Show completions for commands
 set showmatch " Highlight matching features
-set visualbell " Visual beeps instead of audible beeps
+set novisualbell " Visual beeps instead of audible beeps
 set modeline " Enable modeline reading
 
 " Backspace over indentation
