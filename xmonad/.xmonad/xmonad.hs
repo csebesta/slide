@@ -36,7 +36,7 @@ myBorderWidth = 1
 myKeys =
 
     [ (( mod1Mask, xK_p ), spawn "dmenu_run \
-    \ -fn 'DejaVu Sans Mono-12' \
+    \ -fn 'Liberation Mono-12' \
     \ -nb '#002b36' \
     \ -nf '#586e75' \
     \ -sb '#073642' \
@@ -63,7 +63,7 @@ myConfig = def
 
     { manageHook = manageDocks <+> manageHook def
     , layoutHook = smartBorders $ avoidStruts $ layoutHook def
-    , terminal = "rxvt-unicode"
+    , terminal = "xterm"
     , borderWidth = myBorderWidth
     , normalBorderColor = myNormalBorderColor
     , focusedBorderColor = myFocusedBorderColor

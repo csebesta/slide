@@ -12,5 +12,5 @@ URxvt.pointerBlank: true
 
 ! Settings for xterm
 XTerm*termName:xterm-256color
-XTerm*faceName:DejaVu Sans Mono
-XTerm*faceSize:15
+XTerm*faceName:Liberation Mono:antialias=true
+XTerm*faceSize:16
