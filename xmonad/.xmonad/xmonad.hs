@@ -44,7 +44,7 @@ myKeys =
     , (( mod1Mask, xK_e ), spawn "nautilus --no-desktop" )
     , (( mod1Mask, 0x2d ), spawn "amixer -q set Master 5%-" ) -- Lower volume
     , (( mod1Mask, 0x3d ), spawn "amixer -q set Master 5%+" ) -- Raise volume
-    , (( mod1Mask, xK_BackSpace ), spawn "amixer -q set Master toggle" ) -- Mute
+    , (( mod1Mask, xK_BackSpace ), spawn "amixer -qD pulse set Master toggle" ) -- Mute
     , (( mod1Mask .|. controlMask, xK_l ), spawn "slock xset dpms force suspend" ) -- Lock screen
     ]
 
