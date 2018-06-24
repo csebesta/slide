@@ -41,9 +41,10 @@ myKeys =
     \ -nf '#586e75' \
     \ -sb '#073642' \
     \ -sf '#93a1a1'" )
-    , (( mod1Mask, xK_e ), spawn "nautilus --no-desktop" )
+    , (( mod1Mask, xK_e ), spawn "nautilus --no-desktop" ) -- Explorer
     , (( mod1Mask, 0x2d ), spawn "amixer -q set Master 5%-" ) -- Lower volume
     , (( mod1Mask, 0x3d ), spawn "amixer -q set Master 5%+" ) -- Raise volume
+    , (( mod1Mask, xK_Print ), spawn "gm import -window root screenshot.jpg" ) -- Print
     , (( mod1Mask, xK_BackSpace ), spawn "amixer -qD pulse set Master toggle" ) -- Mute
     , (( mod1Mask .|. controlMask, xK_l ), spawn "slock xset dpms force suspend" ) -- Lock screen
     ]

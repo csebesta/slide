@@ -1,0 +1,2 @@
+#!/bin/bash
+firefox https://pluralsight.com > /dev/null 2>&1
