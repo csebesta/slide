@@ -7,7 +7,7 @@ muted="$(amixer get Master | grep 'off')"
 
 # Generate output
 if [ -n "$muted" ]; then
-	echo "[--%]"
+	echo "Vol: --%"
 else
-	echo "[${mixer}]"
+	echo "Vol: ${mixer}"
 fi
