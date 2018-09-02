@@ -49,6 +49,10 @@ let g:limelight_conceal_ctermfg = 10
 set splitbelow
 set splitright
 
+" Line navigation (Navigate by visual lines)
+nnoremap j gj
+nnoremap k gk
+
 " Split navigation
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
