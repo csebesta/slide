@@ -13,6 +13,7 @@ alias ls='ls --group-directories-first --color=always'
 alias l.='ls -d .[!.]* --color=auto 2> /dev/null'
 alias li='ls -li --color=auto'
 alias ll='ls -l --color=auto'
+alias p='pwd'
 
 # Reduce output of haskell compiler
 alias ghc='ghc -hidir /tmp -odir /tmp'

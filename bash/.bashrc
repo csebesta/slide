@@ -119,3 +119,6 @@ fi
 # Set editor to vi
 export EDITOR='vim'
 export VISUAL='vim'
+
+# Set ps1
+PS1="[\u@\h \W]\\$ "
