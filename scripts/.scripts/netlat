@@ -1,0 +1,16 @@
+#!/bin/bash
+# Test the latency of ping command
+
+usage() {
+	echo "Usage: netlat hostname"
+	exit 1
+}
+
+# Error check the argument
+if [ -z $1 ]; then
+	usage
+fi
+
+# Ping the host
+ping -c 3 $1 2> /dev/null |
+awk -F'/' '/rtt/{print "Average RTT:",$5}'
