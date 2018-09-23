@@ -31,7 +31,7 @@ alias free='free -h'
 # lf: A function to display an organized list of normal and hidden files.
 # Useful for getting a quick read on certain directories
 # Using ls --ignore=pattern solves many problems
-lf () {
+lf() {
 
 	# Declare directory
 	if [ -d "$1" ]; then
@@ -60,5 +60,22 @@ lf () {
 	else
 		ls -ACq --ignore=[!.]* $1 --color=always --group-directories-first 2> /dev/null
 	fi
+
+}
+
+# Configure the prompt string
+psconfig() {
+
+	case $1 in
+		centos)
+			PS1="[\u@\h \W]\\$ "
+			;;
+		debian)
+			PS1="\u@\h:\w\\$ "
+			;;
+		*)
+			echo "Usage: psconfig {centos|debian}"
+			return 1
+	esac
 
 }
