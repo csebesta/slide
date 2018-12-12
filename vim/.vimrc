@@ -3,12 +3,16 @@ filetype plugin on
 filetype indent on
 syntax on
 
+" ##############################################################################
+" # Plugin Settings
+" ##############################################################################
+
 " Install vim-plug if it does not exist
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  silent !clear
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC | quit
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	silent !clear
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC | quit
 endif
 
 " Plugins
@@ -18,12 +22,16 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-syntastic/syntastic'
 call plug#end()
 
+"-----------------------------------------------------------
 " Syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -33,21 +41,37 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" ----------------------------------------------------------
 " Goyo settings
 function! s:goyo_enter()
-  set noshowmode
-  set noshowcmd
-  set scrolloff=999
-  set wrap
-  set linebreak
+	set noshowmode
+	set noshowcmd
+	set scrolloff=999
+	set wrap
+	set linebreak
+	"set t_ve=
+	"set cursorline!
+	Limelight
 endfunction
 
+function! s:goyo_leave()
+	set showmode
+	set showcmd
+	set scrolloff=0
+	"set t_ve=[?12l[?25h
+	Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+"-----------------------------------------------------------
 " Limelight settings
 let g:limelight_conceal_ctermfg = 10
 
-" Split behavior
-set splitbelow
-set splitright
+" ##############################################################################
+" # Key Mappings
+" ##############################################################################
 
 " Line navigation (Navigate by visual lines)
 nnoremap j gj
@@ -58,6 +82,10 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
+
+" Split behavior
+set splitbelow
+set splitright
 
 " Enable folding
 set foldmethod=indent
@@ -76,8 +104,9 @@ set nowrap
 au FileType * setlocal fo-=c fo-=r fo-=o
 
 " Tab behavior
-set shiftwidth=4
-set tabstop=4
+set tabstop=2 " Tabs appear as 2 spaces
+set shiftwidth=0 " Autoindent to tabstop value
+set noexpandtab " Do not expand tabs to spaces
 
 " Appearance
 set number " Show line numbers
@@ -166,8 +195,8 @@ endif
 "let g:netrw_altv = 1
 "let g:netrw_winsize = 25
 "augroup ProjectDrawer
-"  autocmd!
-"  autocmd VimEnter * :Vexplore
+"		autocmd!
+"	autocmd VimEnter * :Vexplore
 "augroup END
 
 " Toggle NERDTree
@@ -181,17 +210,13 @@ call togglebg#map("<F5>")
 
 " Toggle line wrap
 map <F2>
-\	:set wrap!<CR>
+\ :set wrap!<CR>
 
 " Save and compile latex document to pdf
 " <Bar> separates command sequences
 nnoremap <F6>
-\	:w<Bar>!pdflatex %:t<CR><CR>
-
-"" Improve ansible yaml
-"autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-"autocmd FileType yaml setlocal indentkeys-=<:>
+\ :w<Bar>!pdflatex %:t<CR><CR>
 
 " Execute python code
 map <F7>
-\	:w<Bar>!clear && python3 %<CR>
+\ :w<Bar>!clear && python3 %<CR>
