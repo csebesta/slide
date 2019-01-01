@@ -20,7 +20,7 @@ cd slide
 ./setup.sh
 ```
 
-The setup.sh script is an optional component that looks for conflicting symboloic links in the home directory that might prevent some directories from being stowed. It is recommended that this script is only run on newly installed systems.
+The setup.sh script is an optional component that looks for conflicting symbolic links in the home directory that might prevent some directories from being stowed. It is recommended that this script is only run on newly installed systems.
 
 License
 -------
