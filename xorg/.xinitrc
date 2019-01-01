@@ -1,5 +1,8 @@
 # vi:syntax=sh
 
+# Load xprofile
+[ -f ~/.xprofile ] && . ~/.xprofile
+
 # Load xresources
 xrdb ~/.Xresources
 
