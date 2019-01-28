@@ -27,10 +27,10 @@ gm convert \
 	-size $RESOLUTION xc:#002b36 \
 	-fill '#93a1a1' -font $FONT1 -pointsize 48 \
 	-gravity Center \
-	-draw "text 0,-50 '$HOSTNAME'" \
+	-draw "text 0,0 '$HOSTNAME'" \
 	-fill '#586e75' -font $FONT2 -pointsize 16 \
 	-gravity Center \
-	-draw "text 0,0 '$TEXT'" \
+	-draw "text 0,50 '$TEXT'" \
 	/tmp/backinfo.png
 
 # Set background
