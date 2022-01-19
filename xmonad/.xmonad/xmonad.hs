@@ -6,6 +6,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.Run (spawnPipe)
+import XMonad.Hooks.SetWMName
 
 ------------------------------------------------------------------------
 -- Status bar (Pretty Printing)
@@ -69,4 +70,5 @@ myConfig = def
     , borderWidth = myBorderWidth
     , normalBorderColor = myNormalBorderColor
     , focusedBorderColor = myFocusedBorderColor
+    , startupHook = setWMName "LG3D"
     } `additionalKeys` myKeys
