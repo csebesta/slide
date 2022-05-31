@@ -100,6 +100,11 @@ set nosmartindent
 set encoding=utf-8
 set nowrap
 
+" Python options
+" :help ft-python-indent
+let g:pyindent_open_paren = '&sw'                                                                                                  
+let g:pyindent_continue = '&sw'
+
 " Disable automatic insertion of comment leaders
 au FileType * setlocal fo-=c fo-=r fo-=o
 
